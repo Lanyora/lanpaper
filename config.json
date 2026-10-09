@@ -1,0 +1,27 @@
+{
+  "app_title": "局域网轻量记事本",
+
+  "_comment_port": "服务端口。被占用时会自动向后探测第一个可用端口，并在终端打印实际端口",
+  "port": 8000,
+
+  "_comment_bind_host": "监听地址。0.0.0.0 表示同局域网内其他机器可访问",
+  "bind_host": "0.0.0.0",
+
+  "_comment_initial_admin_code": "首个管理员的注册邀请码。留空 = 每次启动时随机生成并打印在终端；填了就用你填的（打包/分发前手改这里）",
+  "initial_admin_code": "",
+
+  "_comment_session_hours": "登录后会话维持小时数",
+  "session_hours": 4,
+
+  "_comment_max_upload_mb": "单张图片大小上限（MB）",
+  "max_upload_mb": 5,
+
+  "_comment_allowed_image_ext": "允许上传的图片扩展名白名单",
+  "allowed_image_ext": ["png", "jpg", "jpeg", "gif", "webp"],
+
+  "_comment_page_size": "列表接口默认每页条数",
+  "page_size": 20,
+
+  "_comment_open_browser": "启动后是否自动打开浏览器",
+  "open_browser": true
+}

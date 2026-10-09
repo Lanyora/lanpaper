@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>局域网轻量记事本</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- 背景三层：渐变 + 圆点纹理 + 虚化色斑（fixed，不随滚动） -->
+<div class="bg" aria-hidden="true">
+  <div class="bg-wash"></div>
+  <div class="bg-dots"></div>
+  <div class="bg-blob b1"></div>
+  <div class="bg-blob b2"></div>
+</div>
+
+<div id="app"></div>
+
+<button id="toTop" class="to-top" title="回到顶部" aria-label="回到顶部">↑</button>
+<div id="toast" class="toast"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
