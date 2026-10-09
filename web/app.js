@@ -606,10 +606,10 @@ function sideRight() {
             <button class="btn sm" data-act="toggle-recurring" data-id="${r.id}"
                     data-on="${r.enabled ? 1 : 0}">${r.enabled ? '停' : '启'}</button>
           </div>`).join('')
-      : '<div class="empty">还没有定时规则。例：每日设备点检、每周 Audit。</div>'}
+      : '<div class="empty">还没有定时规则。例：每日例行检查、每周汇总。</div>'}
     ${state.showRecurForm ? `
       <form id="recurForm" style="margin-top:14px">
-        <div class="form-row"><input type="text" name="title" placeholder="如：每日设备点检" required></div>
+        <div class="form-row"><input type="text" name="title" placeholder="如：每日例行检查" required></div>
         <div class="form-row">
           <label>频率</label>
           <select name="freq" id="recurFreq">
@@ -953,10 +953,10 @@ function viewNew() {
         <div class="form-row"><label>标题</label>
           <input type="text" name="title" value="${esc(d.title)}" required></div>
         <div class="form-row"><label>标签（逗号分隔）</label>
-          <input type="text" name="tags" value="${esc(d.tags)}" placeholder="GRR, 可靠性"></div>
+          <input type="text" name="tags" value="${esc(d.tags)}" placeholder="运维, 部署"></div>
         <div class="form-row"><label>阶段（每行一个，仅任务需要）</label>
           <textarea name="progress_titles" style="min-height:96px"
-            placeholder="第一轮数据收集&#10;物资准备&#10;第二轮重测">${esc(d.progress_titles)}</textarea></div>
+            placeholder="需求确认&#10;开发实现&#10;测试验收">${esc(d.progress_titles)}</textarea></div>
         <div class="form-row"><label>结束时间（可选）</label>
           <input type="text" name="end_at" value="${esc(d.end_at)}" placeholder="2026-10-20 18:00"></div>
         <div class="form-row"><label>正文（Markdown，可直接 Ctrl+V 粘贴截图）</label>

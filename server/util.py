@@ -180,7 +180,7 @@ def event_type_label(code: str) -> str:
 
 
 def stage_label(seq, title) -> str:
-    """阶段[2]「物资准备」"""
+    """阶段[2]「方案确认」"""
     return f"阶段[{seq}]「{title}」"
 
 

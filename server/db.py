@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS recurring_rules (
   last_run_at TEXT
 );
 
--- 12. 待办清单（日常待办：定时点检表、手动添加的杂事）
+-- 12. 待办清单（日常待办：定时生成的例行事项、手动添加的杂事）
 --     与"任务"分开：任务有阶段和进度，待办只有"做没做"
 CREATE TABLE IF NOT EXISTS todos (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -168,7 +168,7 @@ class ServerState:
 def create_recurring_todo(state: ServerState, rule) -> int | None:
     """按规则生成一条待办。
 
-    日常点检表、Audit 这类东西的生命周期只有"今天做没做"，
+    日常例行事项的生命周期只有"今天做没做"，
     塞进任务列表会污染主线内容，所以它落在 todos 表里，界面上是一个能打勾的清单。
     同一条规则同一天只生成一次。
     """
