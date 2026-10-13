@@ -96,7 +96,8 @@ function dayLabel(d) {
   return d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-/* 相对时间：列表里显示"最后动过是什么时候"更直观 */
+/* 时间文案的唯一入口：近期用相对时间，稍远补"今天/昨天"，再远补月日，跨年连年份一起给。
+   动态、详情时间线、列表卡的"最后活动"都走这里，保证同一个时刻在哪儿看都是同一句话。 */
 function relTime(iso) {
   if (!iso) return '';
   const d = new Date(iso);
@@ -104,11 +105,18 @@ function relTime(iso) {
   const diff = (Date.now() - d.getTime()) / 1000;
   if (diff < 60) return '刚刚';
   if (diff < 3600) return Math.floor(diff / 60) + ' 分钟前';
-  const today = new Date();
-  if (d.toDateString() === today.toDateString()) return '今天 ' + fmtTime(iso);
-  const yest = new Date(); yest.setDate(yest.getDate() - 1);
+
+  const now = new Date();
+  if (d.toDateString() === now.toDateString()) return '今天 ' + fmtTime(iso);
+
+  const yest = new Date();
+  yest.setDate(yest.getDate() - 1);
   if (d.toDateString() === yest.toDateString()) return '昨天 ' + fmtTime(iso);
-  return d.toLocaleDateString('zh-CN', { month: '2-digit', day: '2-digit' }) + ' ' + fmtTime(iso);
+
+  /* 更早的：月日一定要有；不是今年就连年份一起给，否则只看到"10月7日"不知道是哪年 */
+  const md = `${d.getMonth() + 1}月${d.getDate()}日`;
+  const day = d.getFullYear() === now.getFullYear() ? md : `${d.getFullYear()}年${md}`;
+  return `${day} ${fmtTime(iso)}`;
 }
 
 const TRASH_SVG =
@@ -741,7 +749,7 @@ function itemRow(it, i = 0) {
       ${le ? `<div class="row-latest">
         ${avatar(le.actor)}
         <span class="ellip"><b>${esc(le.actor.nickname || le.actor.username)}</b> ${esc(le.text)}</span>
-        <span style="margin-left:auto;white-space:nowrap">${fmtTime(le.created_at)}</span>
+        <span style="margin-left:auto;white-space:nowrap">${relTime(le.created_at)}</span>
       </div>` : ''}
       <div class="row-meta">
         <span class="kind ${it.kind === 'article' ? 'article' : ''}">${esc(it.kind_label || '')}</span>
@@ -823,7 +831,7 @@ function eventRow(e, showItem, i = 0) {
       ${content ? `<div class="msg">${mdToHtml(content)}</div>` : ''}
       <div class="sub">
         ${target}
-        <span>${fmtTime(e.created_at)} · ${esc(e.actor_ip)}</span>
+        <span class="when">${relTime(e.created_at)} · ${esc(e.actor_ip)}</span>
       </div>
     </div>
   </div>`;

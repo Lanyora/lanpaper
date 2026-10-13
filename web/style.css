@@ -535,6 +535,8 @@ b, strong { font-weight: 600; }
   display: flex; flex-wrap: wrap; align-items: center; gap: 11px; margin-top: 5px;
   font-size: 11px; color: var(--text-muted); letter-spacing: .3px;
 }
+/* 时间当成一个整体，别让"10月7日"和"10:44"折成两行 */
+.ev .sub .when { white-space: nowrap; }
 .itemlink { cursor: pointer; color: var(--accent); }
 .itemlink:hover { text-decoration: underline; }
 
