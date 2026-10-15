@@ -540,7 +540,10 @@ b, strong { font-weight: 600; }
 .itemlink { cursor: pointer; color: var(--accent); }
 .itemlink:hover { text-decoration: underline; }
 
-.composer { margin-top: 16px; }
+/* 发布框放在时间线「之上」：时间线是倒序的，发出去的新消息正好紧贴在它下面出现，
+   不用再拉到评论区底部才能发。上下都留 16px —— 与 .s-head 的 13px、
+   .timeline 的 2px 相邻折叠后取大值，实际间距就是 16px。 */
+.composer { margin: 16px 0; }
 .composer textarea {
   width: 100%; min-height: 80px; padding: 12px 14px; resize: vertical; outline: none;
   border: 1px solid var(--card-border); border-radius: 14px;

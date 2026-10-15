@@ -890,16 +890,16 @@ function viewDetail() {
     <div class="s-card">
       <div class="s-head">时间线<span class="spacer"></span>
         <span class="cn">${state.timeline.length} 条</span></div>
-      <div class="timeline">
-        ${state.timeline.length ? state.timeline.map((e, i) => eventRow(e, false, i)).join('')
-                                : '<div class="empty">还没有动态</div>'}
-      </div>
       <div class="composer">
         <textarea id="comment" placeholder="发布一条进展消息…（可直接 Ctrl+V 粘贴截图）"></textarea>
         <div class="row">
           <span class="tip">消息会留在时间线上，所有人可见</span>
           <button class="btn primary" data-act="comment" data-id="${d.id}">发布</button>
         </div>
+      </div>
+      <div class="timeline">
+        ${state.timeline.length ? state.timeline.map((e, i) => eventRow(e, false, i)).join('')
+                                : '<div class="empty">还没有动态</div>'}
       </div>
     </div>
   </div>`;
